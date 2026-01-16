@@ -1,6 +1,6 @@
 ﻿using ExtensionLibrary;
 using SystemProgramming;
-Console.WriteLine("Введите название окна:");
+"Введите название окна:".Dump();
 string windowName=Console.ReadLine()!;
 "Press enter to kill the other app".Dump();
 Console.ReadLine();
