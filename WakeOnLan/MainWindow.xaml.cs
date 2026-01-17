@@ -89,5 +89,17 @@ namespace WakeOnLan
             }
             catch { }
         }
+
+        private void Scan_Click(object sender, RoutedEventArgs e)
+        {
+            int i = int.Parse(ipToString[0]);
+            int j = int.Parse(ipToString[1]);
+            int k = 110;
+            for (int m = 0; m < 254; m++)
+            {
+                Thread _thread = new Thread(() => GetInform(string.Format("{0}.{1}.{2}.{3}", i.ToString(), j.ToString(), k.ToString(), m.ToString())));
+                _thread.Start();
+             }
+        }
     }
 }
