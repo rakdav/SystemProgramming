@@ -75,7 +75,17 @@ namespace WakeOnLan
                 uint macAddrLen = (uint)macAddr.Length;
                 if(SendARP(BitConverter.ToInt32(dst.GetAddressBytes(), 0), 0, macAddr, ref macAddrLen) != 0)
                     throw new InvalidOperationException("SendARP failed.");
+                string[] str = new string[(int)macAddrLen];
+                for (int i = 0; i < macAddrLen; i++)
+                    str[i] = macAddr[i].ToString("x2");
+                MacAddress = string.Join(":", str);
+                Dispatcher.Invoke(new Action(() =>
+                {
 
+                    _host.Add(new TableHost() { ipAdress = IP_Address, nameComputer = HostName, MacAdress = MacAddress });
+                    listView1.ItemsSource = null;
+                    listView1.ItemsSource = _host;
+                }));
             }
             catch { }
         }
