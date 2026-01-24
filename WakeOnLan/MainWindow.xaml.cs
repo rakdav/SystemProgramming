@@ -25,7 +25,7 @@ namespace WakeOnLan
         string hostname = "";
         IPHostEntry entry;
         string[] ipToString = new string[4];
-        string[] ipadressText;
+        string[] ipaddressText;
         string[] hostnameText;
         string[] macaddressText;
         public MainWindow()
@@ -95,7 +95,7 @@ namespace WakeOnLan
             int i = int.Parse(ipToString[0]);
             int j = int.Parse(ipToString[1]);
             int k = 110;
-            for (int m = 0; m < 254; m++)
+            for (int m = 1; m < 255; m++)
             {
                 Thread _thread = new Thread(() => GetInform(string.Format("{0}.{1}.{2}.{3}", i.ToString(), j.ToString(), k.ToString(), m.ToString())));
                 _thread.Start();
