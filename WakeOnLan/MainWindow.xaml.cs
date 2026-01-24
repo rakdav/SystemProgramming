@@ -32,7 +32,7 @@ namespace WakeOnLan
         {
             InitializeComponent();
             string host = System.Net.Dns.GetHostName();
-            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[3];
+            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[2];
             label3.Content = ip.ToString();
             ipToString = ip.ToString().Split('.');
         }
@@ -94,7 +94,7 @@ namespace WakeOnLan
         {
             int i = int.Parse(ipToString[0]);
             int j = int.Parse(ipToString[1]);
-            int k = 110;
+            int k = int.Parse(ipToString[2]);
             for (int m = 1; m < 255; m++)
             {
                 Thread _thread = new Thread(() => GetInform(string.Format("{0}.{1}.{2}.{3}", i.ToString(), j.ToString(), k.ToString(), m.ToString())));
