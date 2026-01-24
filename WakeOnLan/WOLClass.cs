@@ -9,7 +9,10 @@ namespace WakeOnLan
 {
     public class WOLClass : UdpClient
     {
-        public WOLClass():base(){}
+        public WOLClass()
+            : base()
+        { }
+        //Установим broadcast для отправки сообщений
         public void SetClientToBrodcastMode()
         {
             if (this.Active)

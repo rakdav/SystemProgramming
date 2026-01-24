@@ -11,14 +11,14 @@
             <ListView.ContextMenu>
                 <ContextMenu >
                     <MenuItem Header="Копировать">
-                        <MenuItem Header="IP-adress" Name="copyIP" />
-                        <MenuItem Header="HostName" Name="copyName" />
-                        <MenuItem Header="Mac-adress" Name="copyMacAddress" />
+                        <MenuItem Header="IP-adress" Name="copyIP" Click="copyIP_Click"/>
+                        <MenuItem Header="HostName" Name="copyName" Click="copyName_Click"/>
+                        <MenuItem Header="Mac-adress" Name="copyMacAddress" Click="copyMac_Click"/>
                     </MenuItem>
-                    <MenuItem Header="Очистисть список" Name="ClearList" />
-                    <MenuItem Header="Сохранить список"/>
+                    <MenuItem Header="Очистисть список" Name="ClearList" Click="clear_list_Click"/>
+                    <MenuItem Header="Сохранить список" Click="save_list_Click"/>
                     <MenuItem Header="Действия">
-                        <MenuItem Header="Удаленное включение" Name="PowerOn" />
+                        <MenuItem Header="Удаленное включение" Name="PowerOn" Click="Power_On_Click"/>
                         <MenuItem Header="Удаленное завершение" IsEnabled="False" />
                     </MenuItem>
                     <MenuItem Header="Отмена"/>

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -61,24 +62,36 @@ namespace WakeOnLan
             string IP_Address = "";
             string HostName = "";
             string MacAddress = "";
+
             try
             {
+                //Проверяем существует ли IP
                 entry = Dns.GetHostEntry(textName);
                 foreach (IPAddress a in entry.AddressList)
                 {
                     IP_Address = a.ToString();
                     break;
                 }
+
+                //Получаем HostName
                 HostName = entry.HostName;
+
+                //Получаем Mac-address
                 IPAddress dst = IPAddress.Parse(textName);
+
                 byte[] macAddr = new byte[6];
                 uint macAddrLen = (uint)macAddr.Length;
-                if(SendARP(BitConverter.ToInt32(dst.GetAddressBytes(), 0), 0, macAddr, ref macAddrLen) != 0)
+
+                if (SendARP(BitConverter.ToInt32(dst.GetAddressBytes(), 0), 0, macAddr, ref macAddrLen) != 0)
                     throw new InvalidOperationException("SendARP failed.");
+
                 string[] str = new string[(int)macAddrLen];
                 for (int i = 0; i < macAddrLen; i++)
                     str[i] = macAddr[i].ToString("x2");
+
                 MacAddress = string.Join(":", str);
+
+                //Далее, если всё успешно, добавляем все данные в список, после чего выводим всё в ListView
                 Dispatcher.Invoke(new Action(() =>
                 {
 
@@ -99,7 +112,53 @@ namespace WakeOnLan
             {
                 Thread _thread = new Thread(() => GetInform(string.Format("{0}.{1}.{2}.{3}", i.ToString(), j.ToString(), k.ToString(), m.ToString())));
                 _thread.Start();
-             }
+            }
+        }
+        private void copyIP_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(_host[listView1.SelectedIndex].ipAdress!.ToString());
+        }
+        private void copyName_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(_host[listView1.SelectedIndex].nameComputer!.ToString());
+        }
+        private void copyMac_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(_host[listView1.SelectedIndex].MacAdress!.ToString());
+        }
+        private void clear_list_Click(object sender, RoutedEventArgs e)
+        {
+            _host.Clear();
+            listView1.Items.Refresh();
+        }
+
+        private void save_list_Click(object sender, RoutedEventArgs e)
+        {
+            SaveList();
+        }
+        private void SaveList()
+        {
+            StreamWriter writer = new StreamWriter(Environment.CurrentDirectory+@"\IPMAC.txt",true);
+            for (int i = 0; i < _host.Count;i++)
+            {
+                    writer.WriteLine(_host[i].ipAdress + "#" + _host[i].nameComputer + "#" + _host[i].MacAdress);
+            }
+            writer.Close();
+            MessageBox.Show("Файл сохранен!");
+        }
+        private void Power_On_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WakeFunction(_host[listView1.SelectedIndex].MacAdress!.ToString().Replace(":", ""));
+                MessageBox.Show("Операция успешно выполнена!", "Внимание!",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Запрос некорректный!", "Внимание!Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
