@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using WMI.Samples;
+
+BiosReader reader = new BiosReader();
+reader.ReadBiosDetails();
