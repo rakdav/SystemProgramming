@@ -20,7 +20,7 @@ namespace WMI.Samples
                 {
                     var obj = (ManagementObject)item;
                     var temperature = Convert.ToDouble(obj["CurrentTemperature"])/10-273.15;
-                    $"CPU Temperature:{temperature}".Dump();
+                    $"CPU Temperature:{temperature:F2} C".Dump();
                 }
             }
             catch(ManagementException)
