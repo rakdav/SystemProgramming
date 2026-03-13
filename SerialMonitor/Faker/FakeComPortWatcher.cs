@@ -26,11 +26,11 @@ namespace SerialMonitor.Faker
                 // Trigger the event every second
                 if (_deviceIsAvailable)
                 {
-                    ComportDeletedEvent?.Invoke(this, new ComPortChangedEventArgs("COM1"));
+                    ComportDeletedEvent?.Invoke(this, new ComPortChangedEventArgs("COM3"));
                 }
                 else
                 {
-                    ComportAddedEvent?.Invoke(this, new ComPortChangedEventArgs("COM1"));
+                    ComportAddedEvent?.Invoke(this, new ComPortChangedEventArgs("COM3"));
                 }
                 _deviceIsAvailable = !_deviceIsAvailable;
             };
