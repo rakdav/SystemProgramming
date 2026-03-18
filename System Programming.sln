@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11520.95 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System Programming", "System Programming\System Programming.csproj", "{078DDA63-A45C-4589-B053-1529ED945110}"
 EndProject
@@ -16,8 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryProject", "RegistryProject\RegistryProject.csproj", "{3F68ED93-A40E-4222-967B-BFBFFB320D8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPorts", "SerialPorts\SerialPorts.csproj", "{F56B3ACD-A99D-4EE7-B524-2E379EE5095B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialMonitor", "SerialMonitor\SerialMonitor.csproj", "{F1FF72F7-B253-42EC-9187-AFC1D5CD191B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComPort", "ComPort\ComPort.csproj", "{84E174E2-4DB4-4B84-AE8F-07784ED62EF7}"
 EndProject
@@ -57,10 +55,6 @@ Global
 		{F56B3ACD-A99D-4EE7-B524-2E379EE5095B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F56B3ACD-A99D-4EE7-B524-2E379EE5095B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F56B3ACD-A99D-4EE7-B524-2E379EE5095B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1FF72F7-B253-42EC-9187-AFC1D5CD191B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1FF72F7-B253-42EC-9187-AFC1D5CD191B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1FF72F7-B253-42EC-9187-AFC1D5CD191B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1FF72F7-B253-42EC-9187-AFC1D5CD191B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84E174E2-4DB4-4B84-AE8F-07784ED62EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84E174E2-4DB4-4B84-AE8F-07784ED62EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E174E2-4DB4-4B84-AE8F-07784ED62EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
