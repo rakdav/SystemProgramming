@@ -31,7 +31,10 @@
         </StackPanel>
         <Label Name="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBox x:Name="Message" Margin="10 10" TextWrapping="Wrap" Grid.Row="2"/>
-        <Button Content="Send" Click="Button_Click_1" Grid.Row="3" Margin="10" Width="75" HorizontalAlignment="Right"/>
+        <StackPanel Grid.Row="3">
+            <CheckBox x:Name="OnOff" Content="Off" Checked="CheckBox_Checked" Click="OnOff_Click" />
+            <Button Content="Send" Click="Button_Click_1"  Margin="10" Width="75" HorizontalAlignment="Right"/>
+        </StackPanel>
         <TextBlock x:Name="Answer" Grid.Row="4" Margin="10"/>
         <Button Content="Clear" Click="Button_Click_2" Grid.Row="5" Margin="10" HorizontalAlignment="Right"/>
     </Grid>

@@ -18,10 +18,11 @@ namespace Arduino
     public partial class MainWindow : Window
     {
         private SerialPort serialPort;
-
         public MainWindow()
         {
             InitializeComponent();
+            OnOff.IsChecked = false;
+            OnOff.Content = "Off";
         }
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -74,6 +75,32 @@ namespace Arduino
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Answer.Text = "";
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnOff_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (OnOff.IsChecked == true)
+                {
+                    OnOff.Content = "On";
+                    SendToArduino("LED_ON");
+                }
+                else
+                {
+                    OnOff.Content = "Off";
+                    SendToArduino("LED_OFF");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
