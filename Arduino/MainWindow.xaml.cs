@@ -28,14 +28,13 @@ namespace Arduino
             Dispatcher.Invoke(() =>
             {
                 string receivedData = serialPort.ReadLine();
-                Answer.Text += "Received from Arduino" + receivedData;
+                Answer.Text += receivedData;
             });
         }
 
         private void SendToArduino(string data)
         {
             serialPort.WriteLine(data);
-            Answer.Text += "Send to Arduino:" + data;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,10 +46,12 @@ namespace Arduino
             {
                 serialPort.Open();
                 serialPort.Encoding = Encoding.UTF8;
+                this.Title = "Порт открыт";
+                Label.Content = "Введите текст";
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -61,13 +62,18 @@ namespace Arduino
             }
             catch (Exception ex) 
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             serialPort?.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Answer.Text = "";
         }
     }
 }
