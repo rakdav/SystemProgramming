@@ -21,8 +21,6 @@ namespace Arduino
         public MainWindow()
         {
             InitializeComponent();
-            OnOff.IsChecked = false;
-            OnOff.Content = "Off";
         }
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -48,25 +46,14 @@ namespace Arduino
                 serialPort.Open();
                 serialPort.Encoding = Encoding.UTF8;
                 this.Title = "Порт открыт";
-                Label.Content = "Введите текст";
+                Label.Content = "Соединение установлено";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SendToArduino(Message.Text);
-            }
-            catch (Exception ex) 
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+       
         private void Window_Closed(object sender, EventArgs e)
         {
             serialPort?.Close();
@@ -77,10 +64,6 @@ namespace Arduino
             Answer.Text = "";
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private void OnOff_Click(object sender, RoutedEventArgs e)
         {
@@ -89,12 +72,12 @@ namespace Arduino
                 if (OnOff.IsChecked == true)
                 {
                     OnOff.Content = "On";
-                    SendToArduino("LED_ON");
+                    SendToArduino("On");
                 }
                 else
                 {
                     OnOff.Content = "Off";
-                    SendToArduino("LED_OFF");
+                    SendToArduino("Off");
                 }
             }
             catch (Exception ex)
