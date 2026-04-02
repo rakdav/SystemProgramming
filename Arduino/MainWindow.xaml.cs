@@ -27,7 +27,16 @@ namespace Arduino
             Dispatcher.Invoke(() =>
             {
                 string receivedData = serialPort.ReadLine();
-                Answer.Text += receivedData;
+                if (receivedData == "Свет включен")
+                {
+                    Answer.Text = "Свет включен";
+                    Answer.Foreground=Brushes.Green;
+                }
+                else
+                {
+                    Answer.Text = "Свет выключен";
+                    Answer.Foreground = Brushes.Red;
+                }
             });
         }
 
@@ -73,6 +82,7 @@ namespace Arduino
                 {
                     OnOff.Content = "On";
                     SendToArduino("On");
+
                 }
                 else
                 {
